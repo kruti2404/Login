@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: linear-gradient(to right, #3765aa, #5362b6, #755bbd, #984fbc, #bb3bb4);
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #container {
+            border-radius: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            position: absolute;
+            width: 250px;
+            height: 320px;
+
+        }
+
+        #container h2 {
+            align-items: center;
+            display: flex;
+            margin-top: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid black;
+            margin-left: 10px;
+        }
+
+        #imgoflogin {
+            margin-left: 10%;
+            align-items: center;
+            margin-right: 10px;
+            width: 15%;
+            height: 15%;
+        }
+
+        #lb {
+            padding-left: 10px;
+            text-align: left;
+            text-decoration: none;
+        }
+
+        #container input {
+            border-radius: 7px;
+            width: 225px;
+            border-bottom: 1px solid black;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        #container input:focus {
+            outline: none;
+            background: none;
+
+        }
+
+        #forsignin {
+            font-size: small;
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        hr {
+            margin: 5px;
+            border: 0.5px solid black;
+        }
+
+        #inuser {
+            background: url('proptuser.png')no-repeat;
+            background-size: 6.5%;
+            background-position: 98%;
+        }
+
+        #inpass {
+            background: url('lock.png')no-repeat;
+            background-size: 7.5%;
+            background-position: 98%;
+        }
+
+        #sb {
+            border-radius: 10px;
+            width: 25%;
+            height: 8%;
+            margin-left: 35%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: black;
+            color: white;
+        }
+
+        #sb:hover {
+            background-color: #3765aa;
+        }
+
+
+        #login {
+            font-size: 85%;
+            width: 100px;
+            margin-left: 140px;
+            margin-top: -48px;
+            
+
+        }
+
+        p {
+            align-content: center;
+            margin-left: 42%;
+            margin-top: -18px;
+            width: 10%;
+            text-align: center;
+            background-color: white;
+        }
+        input:focus::placeholder {
+            color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <form action="signin.php" method="post">
+
+            
+            <h2> <img src="login.png" id="imgoflogin"> Sign-in</h2>
+            <label for="name" id="lb"> Username:</label><br>
+            <input type="text" name="username" id="inuser" placeholder="    Username"><br><br>
+            <label for="pass" id="lb"> Password:</label><br>
+            <input type="password" name="pass" id="inpass" placeholder="     Password">
+            <br>
+            <button type="submit" id="sb">Sign-in</button>
+            <br>
+            <hr>
+            <p>or</p>
+            <div id="forsignin">Don't have an account ?</div>
+            <br>
+            <p id="login"><a href="Signup.html">Sign-Up</a></p>
+
+        </form>
+    </div>
+
+</body>
+
+</html>

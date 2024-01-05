@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: linear-gradient(to right, #3765aa, #5362b6, #755bbd, #984fbc, #bb3bb4);
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+
+        }
+
+        #container {
+            border-radius: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            position: absolute;
+            width: 350px;
+            height: 500px;
+
+        }
+
+        #container h2 {
+            align-items: center;
+            display: flex;
+            margin-top: 20px;
+            text-align: center;
+            padding-bottom: 2px;
+            border-bottom: 1px solid black;
+            margin-left: 10px;
+        }
+
+        #imgofsignup {
+            margin-left: 20%;
+            align-items: center;
+            margin-right: 10px;
+            width: 15%;
+            height: 15%;
+        }
+
+
+        #lb {
+            padding-top: 3px;
+            padding-left: 20px;
+            text-align: left;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        #container input {
+
+
+            width: 300px;
+            height: 20px;
+            border-radius: 7px;
+            border-bottom: 1px solid black;
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        #container input:focus {
+            outline: none;
+            background: none;
+
+        }
+
+        #inname {
+            background: url(proptuser.png)no-repeat;
+            background-size: 5%;
+            background-position: 98%;
+        }
+
+        #inuser {
+            background: url(proptuser.png)no-repeat;
+            background-size: 5%;
+            background-position: 98%;
+
+        }
+
+        #inpass {
+            background: url(lock.png)no-repeat;
+            background-size: 6%;
+            background-position: 98%;
+        }
+
+        #inconpass {
+            background: url(lock.png)no-repeat;
+            background-size: 6%;
+            background-position: 98%;
+        }
+
+        #innum {
+            background: url(phone.png)no-repeat;
+            background-size: 5%;
+            background-position: 98%;
+        }
+
+        #sb {
+            border-radius: 10px;
+            width: 25%;
+            height: 5%;
+            margin-left: 35%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            background-color: black;
+            color: white;
+        }
+
+        #sb:hover {
+            background-color: #3765aa;
+        }
+
+        #login {
+            font-size: 85%;
+            width: 100px;
+            margin-top: -30px;
+            margin-left: 35%;
+
+        }
+
+        #forsignin {
+            font-size: small;
+            margin-left: 27%;
+            margin-bottom: 15px;
+        }
+
+        hr {
+            margin: 5px;
+            border: 0.5px solid black;
+        }
+
+        p {
+            align-content: center;
+            margin-left: 42%;
+            margin-top: -18px;
+            width: 10%;
+            padding-bottom: 0;
+            text-align: center;
+            background-color: white;
+        }
+
+        input:focus::placeholder {
+            color: transparent;
+        }
+    </style>
+    <script>
+
+        function validate() {
+            username = document.getElementById("inuser").value.trim();
+            phonenumber = document.getElementById("innum").value.trim();
+            name = document.getElementById("inname").value.trim();
+            pwd = document.getElementById("inpass").value.trim();
+            pwdcon = document.getElementById("inconpass").value.trim();
+
+            var isValid = true;
+
+            if (username == "" || username == null || name == "" || name == null || phonenumber == "" || phonenumber == null || pwd == "" || pwd == null || pwdcon == "" || pwdcon == null) {
+                alert("Each field required");
+                isValid = false;
+            }
+
+            if (pwd !== pwdcon) {
+                alert("Please enter the same password!");
+                isValid = false;
+            }
+
+            var phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phonenumber)) {
+                alert("Enter a valid 10-digit phone number!");
+                isValid = false;
+            }
+
+            var usernamereg = /^[a-zA-Z][a-zA-Z0-9_]{2,19}$/;
+            if (!usernamereg.test(username)) {
+                alert("Username should contain 30 characters which include letters, numbers, and underscores and should start with a letter!");
+                isValid = false;
+            }
+
+            var namereg = /^[a-zA-Z]{3,30}$/;
+            if (!namereg.test(name)) {
+                alert("Enter a valid name!");
+                isValid = false;
+            }
+
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@_$*?&])[A-Za-z\d@$_*?&]{8,}$/;
+            if (!passwordRegex.test(pwd)) {
+                alert("Enter a valid password. It should be at least 8 characters long, include at least one uppercase letter, one lowercase letter, one digit, and one special character.");
+                isValid = false;
+            }
+
+            if (isValid) {
+                storedata();
+                clearform();
+            }
+        }
+
+
+        function clearform() {
+            document.getElementById("inname").value = "";
+            document.getElementById("inuser").value = "";
+            document.getElementById("innum").value = "";
+            document.getElementById("inpass").value = "";
+            document.getElementById("inconpass").value = "";
+        }
+        function storedata()
+        {
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <h2> <img src="signplus.jpg" id="imgofsignup"> Sign-Up</h1>
+
+            <div>
+
+                <form action="signup.php" method="post">
+
+                
+                    <label for="name" id="lb"> Name:</label><br>
+                    <input type="text" name="name" id="inname" class="inputWithImage" placeholder="Username"
+                        oninput="removeimg(this)"><br><br>
+                    <label for="Phoneno" id="lb">Phone Number:</label><br>
+                    <input type="text" name="Phonenumber" id="innum" placeholder="Phone number" class="inputWithImage"
+                        oninput="removeimg(this)"><br><br>
+                    <label for="name" id="lb">Username:</label><br>
+                    <input type="text" name="username" id="inuser" placeholder="Username" class="inputWithImage"
+                        oninput="removeimg(this)"><br><br>
+                    <label for="pass" id="lb"> Password:</label><br>
+                    <input type="password" name="pass" id="inpass" placeholder="Password" class="inputWithImage"
+                        oninput="removeimg(this)">
+                    <br><br>
+                    <label for="pass" id="lb"> Confirm Password:</label><br>
+                    <input type="password" name="passcon" id="inconpass" placeholder="Confirm password" class="inputWithImage"
+                        oninput="removeimg(this)">
+                    <br>
+
+            </div>
+
+                    <button type="submit" id="sb" onclick="validate()">Sign-up</button>
+                    <br>
+                    <hr>
+                    <p>or</p>
+
+                    <div id="forsignin">Already have an account ?</div>
+                    <br>
+                    <p id="login"><a href="signin.html">Sign-in</a></p>
+
+      
+                </form>
+
+
+
+    </div>
+</body>
+
+</html>
